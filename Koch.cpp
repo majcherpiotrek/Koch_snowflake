@@ -2,6 +2,9 @@
 #include <math.h>
 #include <iostream>
 
+const GLfloat radius = 50.0f;
+const GLint num_steps = 3;
+
 struct point2d
 {
     GLfloat X;
@@ -66,15 +69,17 @@ void drawKochSnowflake( GLint steps, point2d A, point2d B, point2d C )
 void RenderScene(void)
 {
     glClear(GL_COLOR_BUFFER_BIT);
-    // Czyszczenie okna aktualnym kolorem czyszczącym
-    point2d A = {-50.0f, -50.0f};
-    point2d B = {50.0f, -50.0f};
-    point2d C = {B.X - A.X, B.Y - A.Y};
-    rotate(C, M_PI/3);
-    C.X += A.X;
-    C.Y += A.Y;
+    
+    
+    point2d center = {0.0f, 0.0f};
+    point2d top_v = {center.X, center.Y + radius};
+    point2d right_v = {center.X + radius, center.Y};
+    point2d left_v = {center.X - radius, center.Y};
 
-    drawKochSnowflake(7, A, B, C);
+    rotate(right_v, -M_PI/6);
+    rotate(left_v, M_PI/6);
+ 
+    drawKochSnowflake(num_steps, left_v, right_v, top_v);
     //breakLine(3,-45.0f, 0.0f, 45.0f, 0.0f, true);
 
     glFlush();
@@ -145,7 +150,7 @@ int main(int argc, char** argv)
 
 
 
-    glutCreateWindow("Dywan Sierpińskiego - Piotr Majcher");
+    glutCreateWindow("Płatek śniegu Koch'a - Piotr Majcher");
     // Utworzenie okna i określenie treści napisu w nagłówku okna
 
     glutDisplayFunc(RenderScene);
