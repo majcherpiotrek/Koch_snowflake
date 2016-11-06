@@ -12,7 +12,7 @@ struct point2d
 };
 
 /*********DANE WEJŚCIOWE***********/
-const GLfloat RADIUS = 50.0f;
+const GLfloat RADIUS = 70.0f;
 const GLint NUM_STEPS = 4;
 const point2d CENTER = {0.0f, 0.0f};
 /**********************************/
@@ -61,11 +61,11 @@ void breakLine(GLint steps, point2d A, point2d B)
   
         /*Wypełniamy kolorem trójkąt, powstały na łamanej*/
         glBegin(GL_TRIANGLES);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(1.0f, 0.0f, 0.0f);
             glVertex2f(p13.X, p13.Y);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(0.0f, 1.0f, 0.0f);
             glVertex2f(p23.X, p23.Y);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(0.0f, 0.0f, 1.0f);
             glVertex2f(w.X, w.Y);
         glEnd();
 
@@ -96,11 +96,11 @@ void drawKochSnowflake( GLint steps, point2d ctr, GLfloat a )
 
     /*Wypełniamy kolorem trójkąt bazowy*/
     glBegin(GL_TRIANGLES);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(1.0f, 0.0f, 0.0f);
             glVertex2f(left_v.X, left_v.Y);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(0.0f, 1.0f, 0.0f);
             glVertex2f(right_v.X, right_v.Y);
-            glColor3f(1.0f, 1.0f, 1.0f);
+            glColor3f(0.0f, 0.0f, 1.0f);
             glVertex2f(top_v.X, top_v.Y);
     glEnd();
 
